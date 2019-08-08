@@ -1,2 +1,2 @@
-* [Tech Talk](tech_talk)
-* [Blog](blog)
+* [Tech Talk](tech_talk/)
+* [Blog](blog/)
