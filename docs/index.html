@@ -23,6 +23,10 @@
       mergeNavbar: true,
       loadNavbar: true,
       subMaxLevel: 3,
+      alias: {
+        '/.*/_sidebar.md': '/summary.md',
+        '/.*/_navbar.md': '/_navbar.md'
+      }
       search: {
         maxAge: 86400000,               // 过期时间，单位毫秒，默认一天
         paths: [],                      // or 'auto'，匹配文件路径
