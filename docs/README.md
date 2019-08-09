@@ -1,3 +1,3 @@
-# Headline
+# Cool Byted
 
-> An awesome project.
+> FE Talk.
