@@ -8,15 +8,19 @@
   <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 <!--   <link rel="stylesheet" href="//unpkg.com/docsify/lib/themes/vue.css"> -->
   <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify-themeable@0/dist/css/theme-simple.css">
+  <link rel="stylesheet" href="//cdn.bootcss.com/gitalk/1.5.0/gitalk.min.css">
 </head>
 <body>
   <div id="app"></div>
+  <div id="cg-gitalk-container"></div>
   <script>
     window.$docsify = {
       name: '',
       repo: '',
+      routerMode: 'history',
       loadSidebar: true,
       loadSidebar: 'summary.md',
+      mergeNavbar: true,
       loadNavbar: true,
       subMaxLevel: 3,
       search: {
@@ -33,12 +37,13 @@
           '/': 'No Results'
         },
         depth: 3,                       // 搜索标题的最大程级, 1 - 6
-        pagination: {
-          previousText: '上一篇',
-          nextText: '下一篇',
-          crossChapter: true
-        }
-      }
+      },
+      pagination: {
+        previousText: '上一篇',
+        nextText: '下一篇',
+        crossChapter: true
+      },
+      formatUpdated: '{YYYY}/{MM}/{DD} {HH}:{mm}',
     };
   </script>
   <script src="//unpkg.com/docsify/lib/docsify.min.js"></script>
@@ -48,6 +53,18 @@
   <script src="//unpkg.com/docsify-pagination/dist/docsify-pagination.min.js"></script>
   <script src="//unpkg.com/docsify/lib/plugins/zoom-image.js"></script>
   <script src="//unpkg.com/docsify/lib/plugins/external-script.js"></script>
+  <script src="//cdn.bootcss.com/gitalk/1.5.0/gitalk.min.js"></script>
+  <script>
+    var gitalk = new Gitalk({
+      clientID: '79d9787d30ca5e261f1b', // GitHub Application Client ID
+      clientSecret: '29bf18aeff981d53e39f1e1923f2a61c36b2bd5d', // GitHub Application Client Secret
+      repo: 'coolbyted'      // 存放评论的仓库
+      owner: 'codingplayboy',          // 仓库的创建者，
+      admin: ['codingplayboy'],        // 如果仓库有多个人可以操作，那么在这里以数组形式写出
+      id: location.pathname,      // 用于标记评论是哪个页面的，确保唯一，并且长度小于50
+    });
+    gitalk.render('cg-gitalk-container');    // 渲染Gitalk评论组件
+  </script>
   <script src="//unpkg.com/prismjs/components/prism-core.js"></script>
   <script src="//unpkg.com/prismjs/components/prism-bash.js"></script>
   <script src="//unpkg.com/prismjs/components/prism-css.min.js"></script>
