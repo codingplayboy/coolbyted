@@ -11,9 +11,8 @@
   <link rel="stylesheet" href="//cdn.bootcss.com/gitalk/1.5.0/gitalk.min.css">
 </head>
 <body>
-  <div id="app">
-    <div id="cg-gitalk-container"></div>
-  </div>
+  <div id="app"></div>
+  <div id="cg-gittalk-container"></div>
   <script>
     window.$docsify = {
       name: 'FE Talk',
@@ -59,25 +58,15 @@
   <script src="//unpkg.com/docsify/lib/plugins/external-script.js"></script>
   <script src="//cdn.bootcss.com/gitalk/1.5.0/gitalk.min.js"></script>
   <script>
-    var oldοnlοad = window.onload;
-    window.onload = function () {
-      if(typeof oldonload === 'function'){
-        oldonload();
-      }
-      var customTalkDiv = document.createElement('div');
-      customTalkDiv.id = 'cg-gittalk-container';
-      var articleMainDiv = document.getElementById('main');
-      articleMainDiv.appendChild(customTalkDiv);
-      var gitalk = new Gitalk({
-        clientID: '79d9787d30ca5e261f1b', // GitHub Application Client ID
-        clientSecret: '29bf18aeff981d53e39f1e1923f2a61c36b2bd5d', // GitHub Application Client Secret
-        repo: 'cool_byted_comment',      // 存放评论的仓库
-        owner: 'codingplayboy',          // 仓库的创建者，
-        admin: ['codingplayboy'],        // 如果仓库有多个人可以操作，那么在这里以数组形式写出
-        id: location.pathname,      // 用于标记评论是哪个页面的，确保唯一，并且长度小于50
-      });
-      gitalk.render('cg-gittalk-container');    // 渲染Gitalk评论组件
-    }
+    var gitalk = new Gitalk({
+      clientID: '79d9787d30ca5e261f1b', // GitHub Application Client ID
+      clientSecret: '29bf18aeff981d53e39f1e1923f2a61c36b2bd5d', // GitHub Application Client Secret
+      repo: 'cool_byted_comment',      // 存放评论的仓库
+      owner: 'codingplayboy',          // 仓库的创建者，
+      admin: ['codingplayboy'],        // 如果仓库有多个人可以操作，那么在这里以数组形式写出
+      id: location.pathname,      // 用于标记评论是哪个页面的，确保唯一，并且长度小于50
+    });
+    gitalk.render('cg-gittalk-container');    // 渲染Gitalk评论组件
   </script>
   <script src="//unpkg.com/prismjs/components/prism-core.js"></script>
   <script src="//unpkg.com/prismjs/components/prism-bash.js"></script>
