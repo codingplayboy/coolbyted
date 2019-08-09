@@ -12,10 +12,10 @@
   <style>
     #cg-gittalk-container {
       width: 100%;
-      max-width: 500px;
       text-align: center;
     }
     #cg-gittalk-content {
+      max-width: 500px;
       margin-left: auto;
       margin-right: auto;
     }
@@ -40,6 +40,7 @@
         '/.*/_sidebar.md': '/summary.md',
         '/.*/_navbar.md': '/_navbar.md'
       },
+      readyTransition: true, // default
       search: {
         maxAge: 86400000,               // 过期时间，单位毫秒，默认一天
         paths: [],                      // or 'auto'，匹配文件路径
