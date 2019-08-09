@@ -9,10 +9,23 @@
 <!--   <link rel="stylesheet" href="//unpkg.com/docsify/lib/themes/vue.css"> -->
   <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify-themeable@0/dist/css/theme-simple.css">
   <link rel="stylesheet" href="//cdn.bootcss.com/gitalk/1.5.0/gitalk.min.css">
+  <style>
+    #cg-gittalk-container {
+      width: 100%;
+      max-width: 500px;
+      text-align: center;
+    }
+    #cg-gittalk-content {
+      margin-left: auto;
+      margin-right: auto;
+    }
+  </style>
 </head>
 <body>
   <div id="app"></div>
-  <div id="cg-gittalk-container"></div>
+  <div id="cg-gittalk-container">
+    <div id="cg-gittalk-content"></div>
+  </div>
   <script>
     window.$docsify = {
       name: 'FE Talk',
@@ -66,7 +79,7 @@
       admin: ['codingplayboy'],        // 如果仓库有多个人可以操作，那么在这里以数组形式写出
       id: location.pathname,      // 用于标记评论是哪个页面的，确保唯一，并且长度小于50
     });
-    gitalk.render('cg-gittalk-container');    // 渲染Gitalk评论组件
+    gitalk.render('cg-gittalk-content');    // 渲染Gitalk评论组件
   </script>
   <script src="//unpkg.com/prismjs/components/prism-core.js"></script>
   <script src="//unpkg.com/prismjs/components/prism-bash.js"></script>
