@@ -81,8 +81,11 @@
             return content + '<p id="post-modify-time-line">{docsify-updated}</p>';
           })
           hook.afterEach(function (html) {
+         
             var updateTime = html.replace(/.*\<p\s+id="post-modify-time-line"\s*\>(.+)<\/p\>.*/i, '$1');
+            console.log(html, updateTime);
             html = html.replace(/(.*)\<p\s+id="post-modify-time-line"\s*\>.*\<\/p\>(.*)/i, '$1$2');
+            console.log('second', html);
             return html.replace(/\<\/h1\>/i, '</h1><p id="post-modify-time-line">' + updateTime + '</p>')
           })
         }
