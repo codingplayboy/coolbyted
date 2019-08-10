@@ -116,7 +116,9 @@
     }
     function locationHashChanged(e) {
       if (e.newURL) {
-        if (e.newURL.replace(/(.+\/)(\#.+)(\?.*[=]?.*)/i, '$2') !== e.oldURL.replace(/(.+\/)(\#.+)(\?.*[=]?.*)/i, '$2')) {
+        if (e.newURL.replace(/(.+\/)(\#.*)(\?.*[=]?.*)/i, '$2')
+            .replace(/(.+\/)(\#.*)/i, '$2') !== e.oldURL.replace(/(.+\/)(\#.*)(\?.*[=]?.*)/i, '$2')
+              .replace(/(.+\/)(\#.*)/i, '$2')) {
           initGitalk({
             href: e.newURL
           });
