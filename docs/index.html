@@ -106,7 +106,7 @@
       var gitalkContainer = document.querySelector('#' + gitalkContainerId + ' .gt-container');
       customGitalkContent && gitalkContainer && customGitalkContent.removeChild(gitalkContainer);
       var articleTitleEle = document.querySelector(articleMainSelector + ' h1');
-      var articleTitle = (articleTitleEle && articleTitleEle[0] && articleTitleEle[0].innerText) || document.title;
+      var articleTitle = (articleTitleEle && articleTitleEle.innerText) || document.title;
       var gitalk = new Gitalk({
         clientID: '79d9787d30ca5e261f1b',
         clientSecret: '29bf18aeff981d53e39f1e1923f2a61c36b2bd5d',
