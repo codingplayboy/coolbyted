@@ -17,8 +17,8 @@
       name: 'FE Talk',
       repo: '',
       routerMode: 'hash',
-      loadSidebar: true,
-      loadSidebar: 'summary.md',
+      loadSidebar: false,
+//       loadSidebar: 'summary.md',
       mergeNavbar: true,
       loadNavbar: true,
       subMaxLevel: 3,
@@ -67,12 +67,16 @@
       if (!window.gitalkInitialFlag) {
         setTimeout(function () {
           var gitalkContainerId = 'cg-gitalk-content';
-          var articleMainEle = document.getElementById('main');
+          var articleMainEle = document.querySelector('.content');
           if (articleMainEle) {
             window.gitalkInitialFlag = true;
+            var customOperateMain = document.createElement('div');
             var customGitalkContainer = document.createElement('div');
+            customOperateMain.id = 'customOperateMain';
+            customOperateMain.className = 'markdown-section';
             customGitalkContainer.id = gitalkContainerId;
-            articleMainEle.appendChild(customGitalkContainer);
+            customOperateMain.append(customGitalkContainer);
+            articleMainEle.appendChild(customOperateMain);
             var gitalk = new Gitalk({
               clientID: '79d9787d30ca5e261f1b', // GitHub Application Client ID
               clientSecret: '29bf18aeff981d53e39f1e1923f2a61c36b2bd5d', // GitHub Application Client Secret
