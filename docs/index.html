@@ -81,12 +81,8 @@
             return content + '<p id="post-modify-time-line">{docsify-updated}</p>';
           })
           hook.afterEach(function (html) {
-         
             var updateTime = html.replace(/.*<p\s+id="post-modify-time-line"\s*>(.*)<\/p>.*/is, '$1');
-            console.log(html, updateTime);
-            console.log('updateTime', updateTime);
             html = html.replace(/(.*)<p\s+id="post-modify-time-line"\s*>.*<\/p>(.*)/i, '$1$2');
-            console.log('second', html);
             return html.replace(/\<\/h1\>/is, '</h1><p id="post-modify-time-line">' + updateTime + '</p>')
           })
         }
@@ -104,19 +100,23 @@
     var originTransitionEnd = window.ontransitionend;
     window.gitalkInitialFlag = false;
     var gitalkContainerId = 'cg-gitalk-content';
+    var articleMainSelector = 'section.content';
     function initGitalk (config) {
       var customGitalkContent = document.getElementById(gitalkContainerId);
       var gitalkContainer = document.querySelector('#' + gitalkContainerId + ' .gt-container');
       customGitalkContent && gitalkContainer && customGitalkContent.removeChild(gitalkContainer);
+      var articleTitleEle = document.querySelector(articleMainSelector + ' h1');
+      var articleTitle = (articleTitleEle && articleTitleEle[0] && articleTitleEle[0].innerText) || document.title;
       var gitalk = new Gitalk({
-        clientID: '79d9787d30ca5e261f1b', // GitHub Application Client ID
-        clientSecret: '29bf18aeff981d53e39f1e1923f2a61c36b2bd5d', // GitHub Application Client Secret
-        repo: 'cool_byted_comment',      // 存放评论的仓库
-        owner: 'codingplayboy',          // 仓库的创建者，
-        admin: ['codingplayboy'],        // 如果仓库有多个人可以操作，那么在这里以数组形式写出
-        id: (config.href || location.href).replace(/(.+\/)(\#.+)(\?.*[=]?.*)/i, '$2').replace(/(.+\/)(\#.*)/i, '$2'),      // 用于标记评论是哪个页面的，确保唯一，并且长度小于50
+        clientID: '79d9787d30ca5e261f1b',
+        clientSecret: '29bf18aeff981d53e39f1e1923f2a61c36b2bd5d',
+        repo: 'cool_byted_comment',
+        owner: 'codingplayboy',
+        admin: ['codingplayboy'],
+        title: config.title || articleTitle,
+        id: (config.href || location.href).replace(/(.+\/)(\#.+)(\?.*[=]?.*)/i, '$2').replace(/(.+\/)(\#.*)/i, '$2'), // 长度小于50
       });
-      gitalk.render(gitalkContainerId);    // 渲染Gitalk评论组件
+      gitalk.render(gitalkContainerId);
     }
     function locationHashChanged(e) {
       if (e.newURL) {
@@ -139,7 +139,7 @@
       }
       if (!window.gitalkInitialFlag) {
         setTimeout(function () {
-          var articleMainEle = document.querySelector('.content');
+          var articleMainEle = document.querySelector(articleMainSelector);
           if (articleMainEle) {
             window.gitalkInitialFlag = true;
             var customOperateMain = document.createElement('div');
