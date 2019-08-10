@@ -1,3 +1,5 @@
+* [Home](/)
+
 * [Tech Talk](tech_talk/)
   * [2019 04 Tech Talk](tech_talk/19_04)
   * [2019 05 Tech Talk](tech_talk/19_05)
