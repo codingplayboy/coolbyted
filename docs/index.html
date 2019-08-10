@@ -39,7 +39,7 @@
       readyTransition: true, // default
       search: {
         maxAge: 86400000,               // 过期时间，单位毫秒，默认一天
-        paths: [],                      // or 'auto'，匹配文件路径
+        paths: 'auto',                      // or 'auto'，匹配文件路径
         // placeholder: 'Type to search',  // 搜索提示框文字， 支持本地化，例子在下面
         placeholder: {
           '/zh-cn/': '搜索',
@@ -57,7 +57,22 @@
         nextText: '下一篇',
         crossChapter: true
       },
-      formatUpdated: '{YYYY}/{MM}/{DD} {HH}:{mm}'
+      formatUpdated: '{YYYY}/{MM}/{DD} {HH}:{mm}',
+      plugins: [
+        function (hook) {
+          var footer = [
+            '<hr/>',
+            '<footer>',
+            '<span>&copy;2019.</span>',
+            '<span>Contact with <a href="mailto:codingfun@163.com" target="_blank">FE</a>.</span>',
+            '</footer>'
+          ].join('');
+
+          hook.afterEach(function (html) {
+            return html + footer;
+          })
+        }
+      ]
     };
   </script>
   <script src="//unpkg.com/docsify/lib/docsify.min.js"></script>
@@ -87,7 +102,7 @@
     }
     function locationHashChanged(e) {
       if (e.newURL) {
-        if (e.newURL !== e.oldURL) {
+        if (e.newURL.replace(/(.+\/)(\#.+)(\?.*[=]?.*)/i, '$2') !== e.oldURL.replace(/(.+\/)(\#.+)(\?.*[=]?.*)/i, '$2')) {
           initGitalk({
             href: e.newURL
           });
