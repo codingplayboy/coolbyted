@@ -9,6 +9,15 @@
 <!--   <link rel="stylesheet" href="//unpkg.com/docsify/lib/themes/vue.css"> -->
   <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify-themeable@0/dist/css/theme-simple.css">
   <link rel="stylesheet" href="//cdn.bootcss.com/gitalk/1.5.0/gitalk.min.css">
+  <link rel="stylesheet" href="./style/han.css" >
+  <style>
+    #main {
+      padding-bottom: 0;
+    }
+    #customOperateMain {
+      padding-top: 0;
+    }
+  </style>
 </head>
 <body>
   <div id="app"></div>
@@ -83,7 +92,7 @@
               repo: 'cool_byted_comment',      // 存放评论的仓库
               owner: 'codingplayboy',          // 仓库的创建者，
               admin: ['codingplayboy'],        // 如果仓库有多个人可以操作，那么在这里以数组形式写出
-              id: location.pathname,      // 用于标记评论是哪个页面的，确保唯一，并且长度小于50
+              id: location.href.replace(/(\?.*[=]?.*)/i, ''),      // 用于标记评论是哪个页面的，确保唯一，并且长度小于50
             });
             gitalk.render(gitalkContainerId);    // 渲染Gitalk评论组件
           }
