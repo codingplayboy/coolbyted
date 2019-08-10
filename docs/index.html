@@ -57,7 +57,7 @@
         nextText: '下一篇',
         crossChapter: true
       },
-      formatUpdated: '{YYYY}/{MM}/{DD} {HH}:{mm}',
+      formatUpdated: '{YYYY}年{MM}月{DD}日 {HH}时{mm}分',
       plugins: [
         function (hook) {
           var footer = [
@@ -68,8 +68,13 @@
             '</footer>'
           ].join('');
 
+          hook.beforeEach(function (content) {
+            return html + '<p class="post-modify-time-line">{docsify-updated}</p>';
+          })
           hook.afterEach(function (html) {
-            return html.replace('</h1>', '</h1><p class="post-time">{docsify-updated}</p>');
+            var updateTime = html.replace(/.*\<p\s+class="post-modify-time-line"\s*\>(.+)<\/p\>.*/i, '$1');
+            html = html.replace(/(.*)\<p\s+class="post-modify-time-line"\s*\>.*\<\/p\>(.*)/i, '$1$2');
+            return html.replace(/\<\/h1\>/i, '</h1><p class="post-modify-time-line">' + updateTime + '</p>')
           })
         }
       ]
