@@ -18,6 +18,15 @@
     #customOperateMain {
       padding-top: 0;
     }
+    #post-modify-time-line {
+      color: #aaaaaa;
+      display: block;
+      font-size: 14px;
+      margin-bottom: 10px;
+      line-height: 1.5;
+      margin: 0;
+      padding: 0;
+    }
   </style>
 </head>
 <body>
@@ -69,12 +78,12 @@
           ].join('');
 
           hook.beforeEach(function (content) {
-            return html + '<p class="post-modify-time-line">{docsify-updated}</p>';
+            return content + '<p id="post-modify-time-line">{docsify-updated}</p>';
           })
           hook.afterEach(function (html) {
-            var updateTime = html.replace(/.*\<p\s+class="post-modify-time-line"\s*\>(.+)<\/p\>.*/i, '$1');
-            html = html.replace(/(.*)\<p\s+class="post-modify-time-line"\s*\>.*\<\/p\>(.*)/i, '$1$2');
-            return html.replace(/\<\/h1\>/i, '</h1><p class="post-modify-time-line">' + updateTime + '</p>')
+            var updateTime = html.replace(/.*\<p\s+id="post-modify-time-line"\s*\>(.+)<\/p\>.*/i, '$1');
+            html = html.replace(/(.*)\<p\s+id="post-modify-time-line"\s*\>.*\<\/p\>(.*)/i, '$1$2');
+            return html.replace(/\<\/h1\>/i, '</h1><p id="post-modify-time-line">' + updateTime + '</p>')
           })
         }
       ]
