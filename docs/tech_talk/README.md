@@ -6,3 +6,4 @@
 2. [2019.05 Tech Talk](tech_talk/19_05)
 3. [2019.06 Tech Talk](tech_talk/19_06)
 4. [2019.07-08 Tech Talk](tech_talk/19_0708) 
+5. [2019.09-10 Tech Talk](tech_talk/19_0910)
